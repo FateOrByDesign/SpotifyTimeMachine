@@ -19,8 +19,9 @@ def main():
     song_scraper = SongScraper(date)
     # get the top 100 songs of the given date
     top_100_songs = song_scraper.scrape_billboard_to_get_top_100()
-    spotify_logger = SpotifyLogger(top_100_songs, SPOTIFY_CLIENT_ID, SPOTIFY_CLIENT_SECRET, SPOTIFY_REDIRECT_URL)
+    spotify_logger = SpotifyLogger(top_100_songs, SPOTIFY_CLIENT_ID, SPOTIFY_CLIENT_SECRET, SPOTIFY_REDIRECT_URL, date)
+    spotify_logger.get_all_song_uri_for_top_100_songs()
+    spotify_logger.create_private_playlist_and_add_songs()
 
-
-
-main()
+if __name__ == "__main__":
+    main()
